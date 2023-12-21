@@ -16,7 +16,7 @@ import java.util.Date;
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long artistId;
     private String skuCode;
     private String name;
     private Date birthDate;
