@@ -1,10 +1,10 @@
-package fact.it.apigateway;
+package fact.it.orderservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiGatewayApplicationTests {
+class OrderServiceApplicationTests {
 
     @Test
     void contextLoads() {
