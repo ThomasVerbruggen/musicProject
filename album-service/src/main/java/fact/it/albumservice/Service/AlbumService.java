@@ -62,24 +62,6 @@ public class AlbumService {
     }
 
     public List<AlbumResponse> getAllAlbums() {
-        List<Album> albums = albumRepository.findAll();
-        return albums.stream().map(this::mapToAlbumResponse).collect(Collectors.toList());
-    }
-
-    public List<AlbumResponse> getAlbumBySkuCode(List<String> skuCode) {
-        List<Album> albums = albumRepository.findBySkuCodeIn(skuCode);
-        return albums.stream().map(this::mapToAlbumResponse).collect(Collectors.toList());
-    }
-
-    private AlbumResponse mapToAlbumResponse(Album album) {
-        return AlbumResponse.builder()
-                .albumId(album.getId())
-                .skuCode(album.getSkuCode())
-                .title(album.getTitle())
-                .releaseDate(album.getReleaseDate())
-                .tracks(album.getTracks())
-                .artistId(album.getArtistId())
-                .genreId(album.getGenreId())
-                .build();
+        return null;
     }
 }

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AlbumResponse {
-    private Long albumId;
+    private String albumId;
     private String skuCode;
     private String title;
     private String releaseDate;
