@@ -25,8 +25,6 @@ public class AlbumService {
             album.setTitle("6 in the tube");
             album.setReleaseDate("2021-01-03");
             album.setTracks(6);
-            album.setArtistId(1L);
-            album.setGenreId(1L);
             albumRepository.save(album);
 
             album = new Album();
@@ -34,8 +32,6 @@ public class AlbumService {
             album.setTitle("6 out the tube");
             album.setReleaseDate("2021-01-01");
             album.setTracks(6);
-            album.setArtistId(1L);
-            album.setGenreId(1L);
             albumRepository.save(album);
 
             album = new Album();
@@ -43,8 +39,6 @@ public class AlbumService {
             album.setTitle("7 in the tube");
             album.setReleaseDate("2020-01-01");
             album.setTracks(7);
-            album.setArtistId(1L);
-            album.setGenreId(1L);
             albumRepository.save(album);
         }
     }
