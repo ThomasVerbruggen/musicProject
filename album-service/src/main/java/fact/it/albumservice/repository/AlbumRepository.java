@@ -10,6 +10,6 @@ import fact.it.albumservice.model.Album;
 
 @Repository
 @Transactional
-public interface AlbumRepository extends MongoRepository<Album, Long> {
+public interface AlbumRepository extends MongoRepository<Album, String> {
     List<Album> findBySkuCodeIn(List<String> skuCode);
 }
