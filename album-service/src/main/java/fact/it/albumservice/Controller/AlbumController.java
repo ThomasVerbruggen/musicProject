@@ -1,4 +1,4 @@
-package fact.it.albumservice.Controller;
+package fact.it.albumservice.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +11,9 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 
-import fact.it.albumservice.Service.AlbumService;
 import fact.it.albumservice.dto.AlbumRequest;
 import fact.it.albumservice.dto.AlbumResponse;
+import fact.it.albumservice.service.AlbumService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
