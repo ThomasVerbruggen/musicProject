@@ -19,32 +19,26 @@ public class AlbumService {
     @PostConstruct
     public void loadData() {
         if (albumRepository.count() <= 0) {
-            Album album = new Album();
-            album.setSkuCode("tube6in");
-            album.setTitle("6 in the tube");
-            album.setReleaseDate("2021-01-03");
-            album.setTracks(6);
-            album.setArtistId(1L);
-            album.setGenreId(1L);
-            albumRepository.save(album);
+            Album album = Album.builder()
+                    .skuCode("tube1")
+                    .title("1 in the tube")
+                    .releaseDate("2020-01-01")
+                    .tracks(1)
+                    .artistId("1L")
+                    .genreId("1L")
+                    .build();
 
-            album = new Album();
-            album.setSkuCode("tube6out");
-            album.setTitle("6 out the tube");
-            album.setReleaseDate("2021-01-01");
-            album.setTracks(6);
-            album.setArtistId(1L);
-            album.setGenreId(1L);
-            albumRepository.save(album);
+            Album album1 = Album.builder()
+                    .skuCode("tube2")
+                    .title("2 in the tube")
+                    .releaseDate("2020-01-01")
+                    .tracks(2)
+                    .artistId("2L")
+                    .genreId("2L")
+                    .build();
 
-            album = new Album();
-            album.setSkuCode("tube7in");
-            album.setTitle("7 in the tube");
-            album.setReleaseDate("2020-01-01");
-            album.setTracks(7);
-            album.setArtistId(1L);
-            album.setGenreId(1L);
             albumRepository.save(album);
+            albumRepository.save(album1);
         }
     }
 
@@ -61,6 +55,26 @@ public class AlbumService {
     }
 
     public List<AlbumResponse> getAllAlbums() {
-        return null;
+        List<Album> albums = albumRepository.findAll();
+
+        return albums.stream().map(this::mapToAlbumResponse).toList();
+    }
+
+    public List<AlbumResponse> getAllAlbumsBySkuCode(List<String> skuCode) {
+        List<Album> albums = albumRepository.findBySkuCodeIn(skuCode);
+
+        return albums.stream().map(this::mapToAlbumResponse).toList();
+    }
+
+    private AlbumResponse mapToAlbumResponse(Album album) {
+        return AlbumResponse.builder()
+                .albumId(album.getAlbumId())
+                .skuCode(album.getSkuCode())
+                .title(album.getTitle())
+                .releaseDate(album.getReleaseDate())
+                .tracks(album.getTracks())
+                .artistId(album.getArtistId())
+                .genreId(album.getGenreId())
+                .build();
     }
 }

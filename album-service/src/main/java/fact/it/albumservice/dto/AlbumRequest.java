@@ -14,6 +14,6 @@ public class AlbumRequest {
     private String title;
     private int tracks;
     private String releaseDate;
-    private Long artistId;
-    private Long genreId;
+    private String artistId;
+    private String genreId;
 }

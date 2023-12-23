@@ -17,6 +17,6 @@ public class Album {
     private String title;
     private String releaseDate;
     private int tracks;
-    private Long artistId;
-    private Long genreId;
+    private String artistId;
+    private String genreId;
 }
