@@ -3,9 +3,9 @@ name: Build and deliver containers
 on: push
 
 jobs:
-  productservice:
+  artistservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, test, deliver product-service container
+    name: Java 17 build, test, deliver artist-service container
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -18,20 +18,20 @@ jobs:
           distribution: adopt
       
       - name: Build, test and package project
-        working-directory: ./product-service
+        working-directory: ./artist-service
         run: mvn package -DskipTests
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKER_USER }}/product-service:latest ./product-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/artist-service:latest ./artist-service
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/product-service:latest
-  inventoryservice:
+        run: docker push ${{ secrets.DOCKER_USER }}/artist-service:latest
+  genreservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, test, deliver inventory-service container
+    name: Java 17 build, test, deliver genre-service container
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -44,20 +44,20 @@ jobs:
           distribution: adopt
 
       - name: Build, test and package project
-        working-directory: ./inventory-service
+        working-directory: ./genre-service
         run: mvn package -DskipTests
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKER_USER }}/inventory-service:latest ./inventory-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/genre-service:latest ./genre-service
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/inventory-service:latest
-  orderservice:
+        run: docker push ${{ secrets.DOCKER_USER }}/genre-service:latest
+  songservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, test, deliver order-service container
+    name: Java 17 build, test, deliver song-service container
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -70,14 +70,14 @@ jobs:
           distribution: adopt
         
       - name: Build, test and package project
-        working-directory: ./order-service
+        working-directory: ./song-service
         run: mvn package -DskipTests
         
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKER_USER }}/order-service:latest ./order-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/song-service:latest ./song-service
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/order-service:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/song-service:latest
