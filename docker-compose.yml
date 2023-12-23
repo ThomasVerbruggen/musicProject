@@ -1,0 +1,94 @@
+services:
+  mongo-albums:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_album_data:/data/db
+
+  mysql-genres:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_genre_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123
+
+  mysql-artists:
+    image: mysql:latest
+    ports:
+      - 3307:3306
+    volumes:
+      - mysql_artist_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123
+
+  mysql-songs:
+    image: mysql:latest
+    ports:
+      - 3308:3306
+    volumes:
+      - mysql_song_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123
+
+  genre-service:
+    depends_on:
+      - mysql-genres
+    image: thomi2003/genre-service
+    ports:
+      - 8080:8080
+    links:
+      - mysql-genres
+    environment:
+      MYSQL_DB_USERNAME: root
+      MYSQL_DB_PASSWORD: abc123
+      MYSQL_DB_HOST: mysql-genres
+      MYSQL_DB_PORT: 3306
+
+  artist-service:
+    depends_on:
+      - mysql-artists
+    image: thomi2003/artist-service
+    ports:
+      - 8081:8081
+    links:
+      - mysql-artists
+    environment:
+      MYSQL_DB_USERNAME: root
+      MYSQL_DB_PASSWORD: abc123
+      MYSQL_DB_HOST: mysql-artists
+      MYSQL_DB_PORT: 3307
+
+  song-service:
+    depends_on:
+      - mysql-songs
+    image: thomi2003/song-service
+    ports:
+      - 8082:8082
+    links:
+      - mysql-songs
+    environment:
+      MYSQL_DB_USERNAME: root
+      MYSQL_DB_PASSWORD: abc123
+      MYSQL_DB_HOST: mysql-songs
+      MYSQL_DB_PORT: 3308
+
+  album-service:
+    depends_on:
+      - mongo-albums
+    image: thomi2003/album-service
+    ports:
+      - 8083:8083
+    links:
+      - mongo-albums
+    environment:
+      MONGODB_PORT: 27017
+      MONGODB_HOST: mongo-albums
+
+volumes:
+  mongodb_album_data:
+  mysql_genre_data:
+  mysql_artist_data:
+  mysql_song_data:
