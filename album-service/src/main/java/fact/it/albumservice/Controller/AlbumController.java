@@ -29,14 +29,6 @@ public class AlbumController {
         albumService.createAlbum(albumRequest);
     }
 
-    // get mapping for sku code
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<AlbumResponse> getAlbumBySkuCode(
-            @RequestBody List<String> skuCode) {
-        return albumService.getAlbumBySkuCode(skuCode);
-    }
-
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<AlbumResponse> getAllAlbums() {
