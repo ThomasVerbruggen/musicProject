@@ -1,0 +1,41 @@
+server:
+  port: 8083
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
+    reactor.netty: TRACE
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: artist-service
+          uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/artists
+            - Method=POST
+          filters:
+            - SetPath=/api/genre
+        - id: product-service-all
+          uri: http://${GENRE_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/genres
+            - Method=GET
+          filters:
+            - SetPath=/api/song/all
+        - id: song-service-all
+          uri: http://${SONG_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/songs
+            - Method=GET
+          filters:
+            - SetPath=/api/song/all
+        - id: album-service
+          uri: http://${ALBUM_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/albumss
+          filters:
+            - SetPath=/api/album
