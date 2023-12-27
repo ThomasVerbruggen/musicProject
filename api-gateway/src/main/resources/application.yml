@@ -39,9 +39,3 @@ spring:
             - Path=/albumss
           filters:
             - SetPath=/api/album
-
-
-  security:
-    user:
-      name: test
-      password: test   
