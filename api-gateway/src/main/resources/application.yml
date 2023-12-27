@@ -28,7 +28,7 @@ spring:
         uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
         predicates:
           - Path=/artists
-          - Method=POST
+          - Method=GET
         filters:
           - SetPath=/api/artists
       - id: genre-service-all
