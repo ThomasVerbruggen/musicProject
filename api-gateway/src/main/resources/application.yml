@@ -46,7 +46,7 @@ spring:
         filters:
           - SetPath=/api/songs
       - id: album-service
-        uri: http://${ALBUM_SERVICE_BASEURL:localhost:8081}
+        uri: http://${ALBUM_SERVICE_BASEURL:localhost:8080}
         predicates:
           - Path=/albums
           - Method=GET

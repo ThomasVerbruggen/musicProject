@@ -60,12 +60,6 @@ public class AlbumService {
         return albums.stream().map(this::mapToAlbumResponse).toList();
     }
 
-    public List<AlbumResponse> getAllAlbumsBySkuCode(List<String> skuCode) {
-        List<Album> albums = albumRepository.findBySkuCodeIn(skuCode);
-
-        return albums.stream().map(this::mapToAlbumResponse).toList();
-    }
-
     private AlbumResponse mapToAlbumResponse(Album album) {
         return AlbumResponse.builder()
                 .albumId(album.getAlbumId())
