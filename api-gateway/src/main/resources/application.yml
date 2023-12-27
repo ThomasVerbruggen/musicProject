@@ -34,7 +34,7 @@ spring:
       - id: genre-service-all
         uri: http://${GENRE_SERVICE_BASEURL:localhost:8080}
         predicates:
-          - Path=/genres
+          - Path=/api/genres
           - Method=GET
         filters:
           - SetPath=/api/genres
