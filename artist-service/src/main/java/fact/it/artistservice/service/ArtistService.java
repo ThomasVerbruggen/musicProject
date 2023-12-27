@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fact.it.artistservice.model.Artist;
 import fact.it.artistservice.repository.ArtistRepository;
@@ -40,8 +41,9 @@ public class ArtistService {
         }
     }
 
-    public List<Artist> getAllArtists() {
-        return null;
+    @Transactional(readOnly = true)
+    public List<Genre> findAll() {
+        return genreRepository.findAll();
     }
 
     public Artist createArtist(Artist artist) {

@@ -16,10 +16,10 @@ public class ArtistController {
 
     private final ArtistService artistService;
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Artist createArtist(@RequestBody Artist artist) {
-        return artistService.createArtist(artist);
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public Object findAll() {
+        return artistService.findAll();
     }
 
     @GetMapping("/all")
