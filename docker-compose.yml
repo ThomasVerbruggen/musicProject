@@ -97,6 +97,33 @@ services:
     networks:
       - default
 
+  api-gateway:
+    depends_on:
+      - genre-service
+      - artist-service
+      - song-service
+      - album-service
+    image: thomi2003/api-gateway:latest
+    ports:
+      - 8084:8084
+    links:
+      - genre-service
+      - artist-service
+      - song-service
+      - album-service
+    environment:
+      GENRE_SERVICE_HOST: genre-service
+      GENRE_SERVICE_PORT: 8080
+      ARTIST_SERVICE_HOST: artist-service
+      ARTIST_SERVICE_PORT: 8081
+      SONG_SERVICE_HOST: song-service
+      SONG_SERVICE_PORT: 8082
+      ALBUM_SERVICE_HOST: album-service
+      ALBUM_SERVICE_PORT: 8083
+    networks:
+      - default
+
+      
 networks:
   default:
     driver: bridge
