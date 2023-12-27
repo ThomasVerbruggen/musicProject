@@ -1,4 +1,4 @@
-package fact.it.songservice.dto;
+package fact.it.inventoryservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SongResponse {
-    private long id;
-    private String title;
-    private String artist;
-    private int year;
-    
+public class InventoryResponse {
+    private String skuCode;
+    private boolean isInStock;
 }
