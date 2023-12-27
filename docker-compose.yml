@@ -103,7 +103,7 @@ services:
       - artist-service
       - song-service
       - album-service
-    image: thomi2003/api-gateway:latest
+    image: thomi2003/ede-api-gateway:latest
     ports:
       - 8084:8084
     links:
