@@ -10,7 +10,7 @@ import fact.it.artistservice.service.ArtistService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/artist")
+@RequestMapping("/api/artists")
 @RequiredArgsConstructor
 public class ArtistController {
 
