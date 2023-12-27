@@ -21,10 +21,4 @@ public class ArtistController {
     public Object findAll() {
         return artistService.findAll();
     }
-
-    @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Artist> getAllArtists() {
-        return artistService.getAllArtists();
-    }
 }
