@@ -42,8 +42,8 @@ public class ArtistService {
     }
 
     @Transactional(readOnly = true)
-    public List<Genre> findAll() {
-        return genreRepository.findAll();
+    public List<Artist> findAll() {
+        return artistRepository.findAll();
     }
 
     public Artist createArtist(Artist artist) {
