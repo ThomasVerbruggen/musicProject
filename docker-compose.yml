@@ -113,9 +113,9 @@ services:
       - album-service
     environment:
       GENRE_SERVICE_BASEURL: http://genre-service:8080
-      ARTIST_SERVICE_BASEURL: http://artist-service
-      SONG_SERVICE_BASEURL: http://song-service
-      ALBUM_SERVICE_BASEURL: http://album-service
+      ARTIST_SERVICE_BASEURL: http://artist-service:8081
+      SONG_SERVICE_BASEURL: http://song-service:8082
+      ALBUM_SERVICE_BASEURL: http://album-service:8083
     networks:
       - default
 
