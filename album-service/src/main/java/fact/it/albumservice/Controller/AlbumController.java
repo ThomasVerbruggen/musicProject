@@ -25,13 +25,6 @@ public class AlbumController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<AlbumResponse> getAllAlbumsBySkuCode(
-            @RequestParam List<String> skuCode) {
-        return albumService.getAllAlbumsBySkuCode(skuCode);
-    }
-
-    @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
     public List<AlbumResponse> getAllAlbums() {
         return albumService.getAllAlbums();
     }
