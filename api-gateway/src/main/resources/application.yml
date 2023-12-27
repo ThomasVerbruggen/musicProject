@@ -22,34 +22,33 @@ spring:
           issuer-uri: https://accounts.google.com
           jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
   cloud:
-  gateway:
-    routes:
-      - id: artist-service
-        uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
-        predicates:
-          - Path=/artists
-          - Method=GET
-        filters:
-          - SetPath=/api/artists
-      - id: genre-service-all
-        uri: http://${GENRE_SERVICE_BASEURL:localhost:8080}
-        predicates:
-          - Path=/genres
-          - Method=GET
-        filters:
-          - SetPath=/api/genres
-      - id: song-service-all
-        uri: http://${SONG_SERVICE_BASEURL:localhost:8080}
-        predicates:
-          - Path=/songs
-          - Method=GET
-        filters:
-          - SetPath=/api/songs
-      - id: album-service
-        uri: http://${ALBUM_SERVICE_BASEURL:localhost:8081}
-        predicates:
-          - Path=/albums
-          - Method=GET
-        filters:
-          - SetPath=/api/albums
+    gateway:
+      routes:
+        - id: artist-service
+          uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/artists
+            - Method=GET
+          filters:
+            - SetPath=/api/artists
+        - id: genre-service-all
+          uri: http://${GENRE_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/genres
+            - Method=GET
+          filters:
+            - SetPath=/api/genres
+        - id: song-service-all
+          uri: http://${SONG_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/songs
+            - Method=GET
+          filters:
+            - SetPath=/api/songs
+        - id: album-service
+          uri: http://${ALBUM_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/albums
+          filters:
+            - SetPath=/api/albums
 
