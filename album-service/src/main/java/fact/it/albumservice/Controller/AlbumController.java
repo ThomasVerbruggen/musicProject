@@ -25,10 +25,9 @@ public class AlbumController {
     }
 
     @GetMapping
-    public String showAlbums(Model model) {
-        List<AlbumResponse> albums = albumService.getAllAlbums();
-        model.addAttribute("albums", albums);
-        return "index";
+    @ResponseStatus(HttpStatus.OK)
+    public List<AlbumResponse> getAllAlbums() {
+        return albumService.getAllAlbums();
     }
 
     @PutMapping("/{albumId}")
