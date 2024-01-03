@@ -51,4 +51,16 @@ public class ArtistServiceApplicationTests {
 
 		assertEquals(artist1, result);
 	}
+
+	@Test
+    public void testDeleteArtistById() {
+        long artistId = 8L;
+        Artist artistToDelete = new Artist(artistId, "artist1", null, null, null, null, null);
+
+        when(artistRepository.findById(artistId)).thenReturn(Optional.of(artistToDelete));
+
+        artistService.deleteArtistById(artistId);
+
+        verify(artistRepository, times(1)).deleteById(artistId);
+    }
 }
