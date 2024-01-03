@@ -1,11 +1,10 @@
 package fact.it.albumservice;
 
 import fact.it.albumservice.dto.AlbumResponse;
-//import fact.it.albumservice.model.ArtistItem;
+import fact.it.albumservice.model.Album;
 import fact.it.albumservice.repository.AlbumRepository;
 import fact.it.albumservice.service.AlbumService;
 
-//import fact.it.albumservice.service.AlbumService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,15 +13,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
-
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class AlbumServiceApplicationTests {
 
-	@InjectMocks 
+	@InjectMocks
 	private AlbumService albumService;
 
 	@Mock
@@ -30,27 +29,43 @@ public class AlbumServiceApplicationTests {
 
 	@Test
 	public void testGetAlbums() {
-		AlbumResponse album1 = new AlbumResponse(1L, "album1", "artist1");
-		AlbumResponse album2 = new AlbumResponse(2L, "album2", "artist2");
-		List<AlbumResponse> albums = Arrays.asList(album1, album2);
+		Album album1 = new Album(
+				"ALB001",
+				"SKU001",
+				"Album Title 1",
+				"2022-01-01", // Assuming release date is a string representation
+				10,
+				"ART001",
+				"GEN001");
+
+		Album album2 = new Album(
+				"ALB002",
+				"SKU002",
+				"Album Title 2",
+				"2022-02-01",
+				12,
+				"ART002",
+				"GEN002");
+
+		List<Album> albums = Arrays.asList(album1, album2);
 
 		when(albumRepository.findAll()).thenReturn(albums);
 
-		List<AlbumResponse> result = albumService.getAlbums();
+		List<AlbumResponse> result = albumService.getAllAlbums();
 
 		assertEquals(2, result.size());
-		assertEquals(album1, result.get(0));
-		assertEquals(album2, result.get(1));
+		assertEquals(new AlbumResponse(album1), result.get(0));
+		assertEquals(new AlbumResponse(album2), result.get(1));
 	}
 
 	@Test
 	public void testGetAlbumById() {
-		AlbumResponse album1 = new AlbumResponse(1L, "album1", "artist1");
+		Album album1 = new Album();
 
-		when(albumRepository.findById(1L)).thenReturn(java.util.Optional.of(album1));
+		when(albumRepository.findById("1L")).thenReturn(Optional.of(album1));
 
-		AlbumResponse result = albumService.getAlbumById(1L);
+		AlbumResponse result = albumService.getAlbumById("1L");
 
-		assertEquals(album1, result);
+		assertEquals(new AlbumResponse(album1), result);
 	}
 }

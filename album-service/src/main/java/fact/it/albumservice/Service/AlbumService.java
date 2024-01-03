@@ -89,4 +89,8 @@ public class AlbumService {
     public void deleteAlbum(String albumId) {
         albumRepository.deleteById(albumId);
     }
+
+    public AlbumResponse getAlbumById(String string) {
+        return null;
+    }
 }
