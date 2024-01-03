@@ -1,0 +1,15 @@
+<!-- Write html to retrieve album data from api gateway -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">    
+<head>
+    <meta charset="UTF-8">
+    <title>Album Service</title>    
+</head>
+<body>
+    <h1>Album Service</h1>
+    <div th:each="album : ${albums}">
+        <p th:text="${album.title}"></p>
+    </div>
+</body>
+
+</html>

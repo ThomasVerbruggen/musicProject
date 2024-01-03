@@ -6,6 +6,7 @@ import fact.it.albumservice.service.AlbumService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -24,8 +25,9 @@ public class AlbumController {
     }
 
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<AlbumResponse> getAllAlbums() {
-        return albumService.getAllAlbums();
+    public String showAlbums(Model model) {
+        List<AlbumResponse> albums = albumService.getAllAlbums();
+        model.addAttribute("albums", albums);
+        return "index";
     }
 }
