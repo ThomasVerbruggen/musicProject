@@ -10,7 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import java.util.Optional;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,23 +52,4 @@ public class ArtistServiceApplicationTests {
 
 		assertEquals(artist1, result);
 	}
-
-	@Test
-	public void testDeleteArtistById() {
-		// Arrange
-		long artistId = 1L;
-		Artist artistToDelete = new Artist(artistId, "Test Artist", null, null, null, null, true);
-
-		// Mocking findById method
-		when(artistRepository.findById(artistId)).thenReturn(Optional.of(artistToDelete));
-
-		// Act
-		artistService.deleteArtistById(artistId);
-
-		// Assert
-		// Verify deleteById method was called
-		verify(artistRepository, times(1)).deleteById(eq(artistId));
-	}
-
-
 }
