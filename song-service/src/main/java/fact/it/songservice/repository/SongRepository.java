@@ -11,5 +11,6 @@ import java.util.List;
 @Transactional
 public interface SongRepository extends JpaRepository<Song, Long> {
     List<Song> findAll();
+
     Song findById(long id);
 }

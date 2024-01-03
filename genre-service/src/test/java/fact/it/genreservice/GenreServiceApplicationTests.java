@@ -19,11 +19,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-
 @ExtendWith(MockitoExtension.class)
 public class GenreServiceApplicationTests {
 
-	@InjectMocks 
+	@InjectMocks
 	private GenreService genreService;
 
 	@Mock
@@ -31,13 +30,13 @@ public class GenreServiceApplicationTests {
 
 	@Test
 	public void testGetGenres() {
-		Genre genre1 = new Genre(1L, "genre1");
-		Genre genre2 = new Genre(2L, "genre2");
+		Genre genre1 = new Genre(1L, "genre1", null, null);
+		Genre genre2 = new Genre(2L, "genre2", null, null);
 		List<Genre> genres = Arrays.asList(genre1, genre2);
 
 		when(genreRepository.findAll()).thenReturn(genres);
 
-		List<Genre> result = genreService.getGenres();
+		List<Genre> result = genreService.findAll();
 
 		assertEquals(2, result.size());
 		assertEquals(genre1, result.get(0));
@@ -46,11 +45,11 @@ public class GenreServiceApplicationTests {
 
 	@Test
 	public void testGetGenreById() {
-		Genre genre1 = new Genre(1L, "genre1");
+		Genre genre1 = new Genre(1L, "genre1", null, null);
 
 		when(genreRepository.findById(1L)).thenReturn(java.util.Optional.of(genre1));
 
-		Genre result = genreService.getGenreById(1L);
+		Genre result = genreService.findById(1L);
 
 		assertEquals(genre1, result);
 	}
