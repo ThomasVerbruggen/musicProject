@@ -14,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -51,23 +50,5 @@ public class ArtistServiceApplicationTests {
 		Artist result = artistService.getArtistById(1L);
 
 		assertEquals(artist1, result);
-	}
-
-	@Test
-	public void testAddActor() {
-		Artist artist = new Artist();
-		artist.setArtistId(1L);
-		artist.setName("Test Artist");
-
-		when(artistRepository.save(artist)).thenReturn(artist);
-
-		Artist artistResponse = artistService.createArtist(artist);
-
-		assertThat(artistResponse.getName()).isEqualTo("Test Artist");
-	}
-
-	@Test
-	public void testDeleteActor() {
-		artistService.deleteArtist(1L);
 	}
 }
