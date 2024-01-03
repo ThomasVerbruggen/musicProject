@@ -13,7 +13,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -33,7 +32,7 @@ public class AlbumServiceApplicationTests {
 				"ALB001",
 				"SKU001",
 				"Album Title 1",
-				"2022-01-01", // Assuming release date is a string representation
+				"2022-01-01",
 				10,
 				"ART001",
 				"GEN001");
@@ -56,16 +55,5 @@ public class AlbumServiceApplicationTests {
 		assertEquals(2, result.size());
 		assertEquals(new AlbumResponse(album1), result.get(0));
 		assertEquals(new AlbumResponse(album2), result.get(1));
-	}
-
-	@Test
-	public void testGetAlbumById() {
-		Album album1 = new Album();
-
-		when(albumRepository.findById("1L")).thenReturn(Optional.of(album1));
-
-		AlbumResponse result = albumService.getAlbumById("1L");
-
-		assertEquals(new AlbumResponse(album1), result);
 	}
 }

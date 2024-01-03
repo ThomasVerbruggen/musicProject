@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,6 +28,7 @@ public class SongServiceApplicationTests {
 
 	@Mock
 	private SongRepository songRepository;
+
 
 	@Test
 	public void testGetSongs() {
@@ -42,5 +44,4 @@ public class SongServiceApplicationTests {
 		assertEquals(song1, result.get(0));
 		assertEquals(song2, result.get(1));
 	}
-
 }
