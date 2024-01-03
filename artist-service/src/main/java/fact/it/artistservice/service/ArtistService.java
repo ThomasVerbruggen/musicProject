@@ -85,6 +85,7 @@ public class ArtistService {
         artistRepository.deleteById(artistId);
     }
 
+
     public Artist createArtist(ArtistRequest artistRequest) {
         Artist newArtist = new Artist();
         newArtist.setSkuCode(artistRequest.getSkuCode());

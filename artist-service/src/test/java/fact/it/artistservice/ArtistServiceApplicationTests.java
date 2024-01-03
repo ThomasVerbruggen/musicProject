@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -55,14 +56,20 @@ public class ArtistServiceApplicationTests {
 
 	@Test
 	public void testDeleteArtistById() {
-    long artistId = 8L;
-    	Artist artistToDelete = new Artist(artistId, "artist1", null, null, null, null, null);
+		// Arrange
+		long artistId = 1L;
+		Artist artistToDelete = new Artist(artistId, "Test Artist", null, null, null, null, true);
 
-    	when(artistRepository.findById(artistId)).thenReturn(Optional.of(artistToDelete));
+		// Mocking findById method
+		when(artistRepository.findById(artistId)).thenReturn(Optional.of(artistToDelete));
 
-    	artistService.deleteArtistById(artistId);
+		// Act
+		artistService.deleteArtistById(artistId);
 
-    	verify(artistRepository, times(1)).deleteById(artistId);
+		// Assert
+		// Verify deleteById method was called
+		verify(artistRepository, times(1)).deleteById(eq(artistId));
 	}
+
 
 }
