@@ -65,14 +65,14 @@ spring:
             - Path=/artists/update/**
             - Method=PUT
           filters:
-            - SetPath=/api/artists/{artistId}
+            - RewritePath=/artists/(?<artistId>.*), /api/artists/${artistId}
         - id: delete-artist
           uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
           predicates:
             - Path=/artists/delete/**
             - Method=DELETE
           filters:
-            - RewritePath=/artists/delete/(?<artistId>.*), /api/artists/${artistId}
+            - RewritePath=/artists/(?<artistId>.*), /api/artists/${artistId}
         - id: post-artist
           uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
           predicates:
