@@ -1,15 +1,41 @@
-<!-- Write html to retrieve album data from api gateway -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">    
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Album Service</title>    
+    <title>Album Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 20px;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        .album-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .album-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <h1>Album Service</h1>
-    <div th:each="album : ${albums}">
-        <p th:text="${album.title}"></p>
+    <div class="album-container" th:each="album : ${albums}">
+        <div class="album-card">
+            <h3 th:text="${album.title}"></h3>
+            <p th:text="${album.artist}"></p>
+            <p th:text="${album.releaseYear}"></p>
+        </div>
     </div>
 </body>
-
 </html>

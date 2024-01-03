@@ -2,14 +2,42 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-
     <title>Song Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 20px;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        .song-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .song-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <h1>Song Service</h1>
 
-    <div th:each="song : ${songs}">
-        <p th:text="${song.name}"></p>
+    <div class="song-container" th:each="song : ${songs}">
+        <div class="song-card">
+            <h3 th:text="${song.name}"></h3>
+            <p th:text="${song.artist}"></p>
+            <p th:text="${song.album}"></p>
+            <p th:text="${song.genre}"></p>
+        </div>
     </div>
 </body>
 </html>
