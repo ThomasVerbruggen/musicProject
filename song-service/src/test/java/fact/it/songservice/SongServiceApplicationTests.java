@@ -15,14 +15,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class SongServiceApplicationTests {
 
-	@InjectMocks 
+	@InjectMocks
 	private SongService songService;
 
 	@Mock
@@ -30,13 +32,13 @@ public class SongServiceApplicationTests {
 
 	@Test
 	public void testGetSongs() {
-		Song song1 = new Song(1L, "song1", "artist1", "album1", new BigDecimal(1.0));
-		Song song2 = new Song(2L, "song2", "artist2", "album2", new BigDecimal(2.0));
+		Song song1 = new Song(1L, "song1", "artist1", 2022);
+		Song song2 = new Song(2L, "song2", "artist2", 2023);
 		List<Song> songs = Arrays.asList(song1, song2);
 
 		when(songRepository.findAll()).thenReturn(songs);
 
-		List<Song> result = songService.getSongs();
+		List<Song> result = songService.findAll();
 
 		assertEquals(2, result.size());
 		assertEquals(song1, result.get(0));
@@ -45,23 +47,22 @@ public class SongServiceApplicationTests {
 
 	@Test
 	public void testGetSongById() {
-		Song song1 = new Song(1L, "song1", "artist1", "album1", new BigDecimal(1.0));
+		Song song1 = new Song(1L, "song1", "artist1", 2022);
 
-		when(songRepository.findById(1L)).thenReturn(java.util.Optional.of(song1));
+		when(songRepository.findById(1L)).thenReturn(Optional.of(song1));
 
 		Song result = songService.getSongById(1L);
 
 		assertEquals(song1, result);
 	}
 
-	
 	@Test
-	public void testGetSongByScuCode() {
-		Song song1 = new Song(1L, "song1", "artist1", "album1", new BigDecimal(1.0));
+	public void testGetSongByTitle() {
+		Song song1 = new Song(1L, "song1", "artist1", 2022);
 
-		when(songRepository.findByScuCode("song1")).thenReturn(java.util.Optional.of(song1));
+		when(songRepository.findByTitle("song1")).thenReturn(Optional.of(song1));
 
-		Song result = songService.getSongByScuCode("song1");
+		Song result = songService.getSongByTitle("song1");
 
 		assertEquals(song1, result);
 	}
