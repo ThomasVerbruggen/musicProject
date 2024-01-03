@@ -80,11 +80,9 @@ public class ArtistService {
         artistRepository.save(existingArtist);
     }
 
-    @Transactional
-    public void deleteArtistById(Long artistId) {
+    public void deleteArtist(Long artistId) {
         artistRepository.deleteById(artistId);
     }
-
 
     public Artist createArtist(ArtistRequest artistRequest) {
         Artist newArtist = new Artist();
