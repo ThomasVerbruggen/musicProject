@@ -95,4 +95,9 @@ public class ArtistService {
 
         return artistRepository.save(newArtist);
     }
+
+    public Artist getArtistById(long artistId) {
+        Optional<Artist> artistOptional = artistRepository.findById(artistId);
+        return artistOptional.orElse(null);
+    }
 }

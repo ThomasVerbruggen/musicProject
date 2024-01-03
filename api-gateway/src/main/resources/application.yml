@@ -52,13 +52,6 @@ spring:
             - Method=GET
           filters:
             - SetPath=/api/albums
-        - id: album-service
-          uri: http://${ALBUM_SERVICE_BASEURL:localhost:8080}
-          predicates:
-            - Path=/albums
-            - Method=POST
-          filters:
-            - SetPath=/api/albums
         - id: post-album
           uri: http://${ALBUM_SERVICE_BASEURL:localhost:8080}
           predicates:
@@ -66,18 +59,25 @@ spring:
             - Method=POST
           filters:
             - SetPath=/api/albums
-        - id: edit-album
-          uri: http://${ALBUM_SERVICE_BASEURL:localhost:8080}
+        - id: edit-artist
+          uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
           predicates:
-            - Path=/albums/**
+            - Path=/artists/update/**
             - Method=PUT
           filters:
-            - SetPath=/api/albums/{albumId}
-        - id: delete-album
-          uri: http://${ALBUM_SERVICE_BASEURL:localhost:8080}
+            - SetPath=/api/artists/{artistId}
+        - id: delete-artist
+          uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
           predicates:
-            - Path=/albums/**
+            - Path=/artists/delete/**
             - Method=DELETE
           filters:
-            - SetPath=/api/albums/{albumId}
+            - SetPath=/api/artists/{artistId}
+        - id: post-artist
+          uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/albums
+            - Method=POST
+          filters:
+            - SetPath=/api/artists
 
