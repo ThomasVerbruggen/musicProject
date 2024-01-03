@@ -52,3 +52,10 @@ spring:
             - Method=GET
           filters:
             - SetPath=/api/albums
+        - id: album-service
+          uri: http://${ALBUM_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/albums
+            - Method=POST
+          filters:
+            - SetPath=/api/albums
