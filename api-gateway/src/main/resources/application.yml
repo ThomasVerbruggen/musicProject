@@ -72,7 +72,7 @@ spring:
             - Path=/artists/delete/**
             - Method=DELETE
           filters:
-            - SetPath=/api/artists/{artistId}
+            - RewritePath=/artists/delete/(?<artistId>.*), /api/artists/${artistId}
         - id: post-artist
           uri: http://${ARTIST_SERVICE_BASEURL:localhost:8080}
           predicates:
