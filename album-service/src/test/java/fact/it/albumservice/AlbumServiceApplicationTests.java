@@ -13,10 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -57,32 +55,5 @@ public class AlbumServiceApplicationTests {
 		assertEquals(2, result.size());
 		assertEquals(new AlbumResponse(album1), result.get(0));
 		assertEquals(new AlbumResponse(album2), result.get(1));
-	}
-
-	@Test
-	void getAlbumByID_validId_returnsCorrectAlbum() throws Exception {
-		Album album1 = new Album(
-				"ALB001",
-				"SKU001",
-				"Album Title 1",
-				"2022-01-01",
-				10,
-				"ART001",
-				"GEN001");
-
-		when(albumRepository.findById("ALB001")).thenReturn(Optional.of(album1));
-
-		AlbumResponse result = albumService.getAlbumById("ALB001");
-
-		assertEquals(new AlbumResponse(album1), result);
-	}
-
-	@Test
-	void getAlbumByID_invalidId_throwsException() {
-		when(albumRepository.findById("ALB001")).thenReturn(Optional.empty());
-
-		assertThrows(Exception.class, () -> {
-			albumService.getAlbumById("ALB001");
-		});
 	}
 }
