@@ -71,4 +71,22 @@ public class AlbumService {
                 .genreId(album.getGenreId())
                 .build();
     }
+
+    public void updateAlbum(String albumId, AlbumRequest albumRequest) {
+        Album existingAlbum = albumRepository.findById(albumId)
+                .orElseThrow(() -> new RuntimeException("Album not found"));
+
+        existingAlbum.setSkuCode(albumRequest.getSkuCode());
+        existingAlbum.setTitle(albumRequest.getTitle());
+        existingAlbum.setReleaseDate(albumRequest.getReleaseDate());
+        existingAlbum.setTracks(albumRequest.getTracks());
+        existingAlbum.setArtistId(albumRequest.getArtistId());
+        existingAlbum.setGenreId(albumRequest.getGenreId());
+
+        albumRepository.save(existingAlbum);
+    }
+
+    public void deleteAlbum(String albumId) {
+        albumRepository.deleteById(albumId);
+    }
 }
