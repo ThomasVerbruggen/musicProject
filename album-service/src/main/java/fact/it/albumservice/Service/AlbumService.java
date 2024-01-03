@@ -1,4 +1,4 @@
-package fact.it.albumservice.service;
+package fact.it.albumservice.Service;
 
 import java.util.List;
 
