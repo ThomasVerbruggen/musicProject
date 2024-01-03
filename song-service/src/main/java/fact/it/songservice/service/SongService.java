@@ -15,7 +15,7 @@ import java.util.List;
 public class SongService {
 
     private final SongRepository songRepository;
-    
+
     @PostConstruct
     public void loadData() {
         if (songRepository.count() == 0) {
@@ -25,13 +25,14 @@ public class SongService {
         }
     }
 
+
     @Transactional(readOnly = true)
     public List<Song> findAll() {
         return songRepository.findAll();
     }
 
     @Transactional(readOnly = true)
-    public Song findById(long id) {
+    public Song findById(long id) throws Exception {
         return songRepository.findById(id);
     }
 }

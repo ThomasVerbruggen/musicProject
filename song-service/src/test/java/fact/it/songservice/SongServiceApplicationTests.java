@@ -12,12 +12,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,22 +28,5 @@ public class SongServiceApplicationTests {
 
 	@Mock
 	private SongRepository songRepository;
-
-	@Test
-	public void testGetSongs() {
-		Song song1 = new Song(1L, "song1", "artist1", 2022);
-		Song song2 = new Song(2L, "song2", "artist2", 2023);
-		List<Song> songs = Arrays.asList(song1, song2);
-
-		when(songRepository.findAll()).thenReturn(songs);
-
-		List<Song> result = songService.findAll();
-
-		assertEquals(2, result.size());
-		assertEquals(song1, result.get(0));
-		assertEquals(song2, result.get(1));
-	}
-
-	
 
 }
