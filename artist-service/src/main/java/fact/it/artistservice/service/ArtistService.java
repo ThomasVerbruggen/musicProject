@@ -80,7 +80,8 @@ public class ArtistService {
         artistRepository.save(existingArtist);
     }
 
-    public void deleteArtist(Long artistId) {
+    @Transactional
+    public void deleteArtistById(Long artistId) {
         artistRepository.deleteById(artistId);
     }
 
