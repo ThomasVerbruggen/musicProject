@@ -30,14 +30,14 @@ public class ArtistController {
 
     @DeleteMapping("/{artistId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAlbum(@PathVariable Long artistId) {
+    public void deleteArtist(@PathVariable Long artistId) {
         artistService.deleteArtist(artistId);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public void createAlbum(
-            @RequestBody ArtistRequest albumRequest) {
-        artistService.createArtist(albumRequest);
+    public void createArtist(
+            @RequestBody ArtistRequest artistRequest) {
+        artistService.createArtist(artistRequest);
     }
 }
