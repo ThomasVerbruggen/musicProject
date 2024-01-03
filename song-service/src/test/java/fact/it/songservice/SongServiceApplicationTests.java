@@ -12,10 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -44,7 +42,5 @@ public class SongServiceApplicationTests {
 		assertEquals(song1, result.get(0));
 		assertEquals(song2, result.get(1));
 	}
-
-	
 
 }
