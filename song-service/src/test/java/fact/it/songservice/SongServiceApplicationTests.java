@@ -45,15 +45,6 @@ public class SongServiceApplicationTests {
 		assertEquals(song2, result.get(1));
 	}
 
-	// @Test
-	// public void testGetSongById() {
-	// 	Song song1 = new Song(1L, "song1", "artist1", 2022);
-
-	// 	when(songRepository.findById(1L)).thenReturn(java.util.Optional.of(song1));
-
-	// 	Song result = songService.findById(1L);
-
-	// 	assertEquals(song1, result);
-	// }
+	
 
 }
