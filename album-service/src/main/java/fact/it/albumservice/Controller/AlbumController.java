@@ -2,12 +2,15 @@ package fact.it.albumservice.controller;
 
 import fact.it.albumservice.dto.AlbumRequest;
 import fact.it.albumservice.dto.AlbumResponse;
+import fact.it.albumservice.model.Album;
 import fact.it.albumservice.service.AlbumService;
+
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
