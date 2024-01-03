@@ -4,10 +4,12 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fact.it.artistservice.dto.ArtistRequest;
 import fact.it.artistservice.model.Artist;
 import fact.it.artistservice.repository.ArtistRepository;
 
@@ -46,7 +48,51 @@ public class ArtistService {
         return artistRepository.findAll();
     }
 
-    public Artist createArtist(Artist artist) {
-        return artistRepository.save(artist);
+    @Transactional
+    public void updateArtist(String artistId, ArtistRequest artistRequest) {
+        Long artistIdLong;
+
+        try {
+            artistIdLong = Long.parseLong(artistId);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid artistId format. Must be a number.");
+        }
+
+        Optional<Artist> existingArtistOptional = artistRepository.findById(artistIdLong);
+
+        if (existingArtistOptional.isPresent()) {
+            Artist existingArtist = existingArtistOptional.get();
+
+            performUpdate(existingArtist, artistRequest);
+        } else {
+            throw new RuntimeException("Artist not found with ID: " + artistId);
+        }
+    }
+
+    private void performUpdate(Artist existingArtist, ArtistRequest artistRequest) {
+        existingArtist.setName(artistRequest.getName());
+        existingArtist.setSkuCode(artistRequest.getSkuCode());
+        existingArtist.setBirthDate(artistRequest.getBirthDate());
+        existingArtist.setCountryOfOrigin(artistRequest.getCountryOfOrigin());
+        existingArtist.setLabel(artistRequest.getLabel());
+        existingArtist.setIsActive(artistRequest.getIsActive());
+
+        artistRepository.save(existingArtist);
+    }
+
+    public void deleteArtist(Long artistId) {
+        artistRepository.deleteById(artistId);
+    }
+
+    public Artist createArtist(ArtistRequest artistRequest) {
+        Artist newArtist = new Artist();
+        newArtist.setSkuCode(artistRequest.getSkuCode());
+        newArtist.setName(artistRequest.getName());
+        newArtist.setBirthDate(artistRequest.getBirthDate());
+        newArtist.setCountryOfOrigin(artistRequest.getCountryOfOrigin());
+        newArtist.setLabel(artistRequest.getLabel());
+        newArtist.setIsActive(artistRequest.getIsActive());
+
+        return artistRepository.save(newArtist);
     }
 }

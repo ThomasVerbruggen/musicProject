@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import fact.it.artistservice.model.Artist;
+import fact.it.artistservice.dto.ArtistRequest;
 import fact.it.artistservice.service.ArtistService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/artists")
@@ -20,5 +18,26 @@ public class ArtistController {
     @ResponseStatus(HttpStatus.OK)
     public Object findAll() {
         return artistService.findAll();
+    }
+
+    @PutMapping("/{artistId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateArtist(
+            @PathVariable String artistId,
+            @RequestBody ArtistRequest artistRequest) {
+        artistService.updateArtist(artistId, artistRequest);
+    }
+
+    @DeleteMapping("/{artistId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteArtist(@PathVariable Long artistId) {
+        artistService.deleteArtist(artistId);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public void createArtist(
+            @RequestBody ArtistRequest artistRequest) {
+        artistService.createArtist(artistRequest);
     }
 }

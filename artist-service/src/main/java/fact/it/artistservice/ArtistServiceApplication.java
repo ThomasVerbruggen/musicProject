@@ -9,4 +9,6 @@ public class ArtistServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ArtistServiceApplication.class, args);
 	}
+
+	
 }
