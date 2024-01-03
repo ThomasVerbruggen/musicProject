@@ -59,3 +59,25 @@ spring:
             - Method=POST
           filters:
             - SetPath=/api/albums
+        - id: post-album
+          uri: http://${ALBUM_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/albums
+            - Method=POST
+          filters:
+            - SetPath=/api/albums
+        - id: edit-album
+          uri: http://${ALBUM_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/albums/**
+            - Method=PUT
+          filters:
+            - SetPath=/api/albums/{albumId}
+        - id: delete-album
+          uri: http://${ALBUM_SERVICE_BASEURL:localhost:8080}
+          predicates:
+            - Path=/albums/**
+            - Method=DELETE
+          filters:
+            - SetPath=/api/albums/{albumId}
+
