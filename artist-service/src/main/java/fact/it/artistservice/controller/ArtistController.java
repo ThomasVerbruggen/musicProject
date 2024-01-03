@@ -20,7 +20,7 @@ public class ArtistController {
         return artistService.findAll();
     }
 
-    @PutMapping("/{artistId}")
+    @PutMapping("update/{artistId}")
     @ResponseStatus(HttpStatus.OK)
     public void updateArtist(
             @PathVariable String artistId,
@@ -28,7 +28,7 @@ public class ArtistController {
         artistService.updateArtist(artistId, artistRequest);
     }
 
-    @DeleteMapping("/{artistId}")
+    @DeleteMapping("delete/{artistId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteArtist(@PathVariable Long artistId) {
         artistService.deleteArtist(artistId);
