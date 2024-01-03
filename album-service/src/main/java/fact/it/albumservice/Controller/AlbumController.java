@@ -28,18 +28,4 @@ public class AlbumController {
     public List<AlbumResponse> getAllAlbums() {
         return albumService.getAllAlbums();
     }
-
-    @PutMapping("/{albumId}")
-    @ResponseStatus(HttpStatus.OK)
-    public void updateAlbum(
-            @PathVariable String albumId,
-            @RequestBody AlbumRequest albumRequest) {
-        albumService.updateAlbum(albumId, albumRequest);
-    }
-
-    @DeleteMapping("/{albumId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAlbum(@PathVariable String albumId) {
-        albumService.deleteAlbum(albumId);
-    }
 }
