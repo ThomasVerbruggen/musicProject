@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-albums
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: mongo-albums
+  template:
+    metadata:
+      labels:
+        app: mongo-albums
+    spec:
+      containers:
+        - name: mongo-albums
+          image: mongo:latest
+          ports:
+            - containerPort: 27017
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-albums
+  namespace: default
+spec:
+  selector:
+    app: mongo-albums
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: album-service
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: album-service
+  template:
+    metadata:
+      labels:
+        app: album-service
+    spec:
+      containers:
+        - name: album-service
+          image: thomi2003/album-service:latest
+          env:
+            - name: MONGODB_PORT
+              value: "27017"
+            - name: MONGODB_HOST
+              value: "mongo-albums"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: album-service
+  namespace: default
+spec:
+  selector:
+    app: album-service
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 8083
