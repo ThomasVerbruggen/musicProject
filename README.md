@@ -176,10 +176,46 @@ Dan hebben we ook nog 1 put en 1 delete call gemaakt. Deze zijn voor het aanpass
                 filters:
                     - SetPath=/api/artists
 
+### De 4 get calls:
+![Local Image](/Images/AlbumGet.png)
+![Local Image](/Images/ArtistGet.png)
+![Local Image](/Images/SongGet.png)
+![Local Image](/Images/GenreGet.png)
+
+
+### De 2 post calls:
+
+#### Album post call:
+![Local Image](/Images/AlbumPost.png)
+![Local Image](/Images/AlbumAfterPost.png)
+
+#### Artist post call:
+![Local Image](/Images/ArtistPost.png)
+![Local Image](/Images/artistAfterPost.png)
+
+### De put call:
+![Local Image](/Images/ArtistPut.png)
+![Local Image](/Images/ArtistAfterPut.png)
+
+### De delete call:
+![Local Image](/Images/ArtistDelete.png)
+![Local Image](/Images/ArtistAfterDelete.png)
+
+
+
+## Deployment Diagram
+![Local Image](/Images/schema.png)
+
+
 
 ## Kubernetes
 We hebben gekozen om de uitbreiding van prometheus en grafana te doen. 
 
+![Local Image](/Images/Screenshot%202024-01-03%20at%2020.11.46.png)
+Prometheus:
+![Local Image](/Images/Screenshot%202024-01-03%20at%2020.14.56.png)
+Grafana:
+![Local Image](/Images/Screenshot%202024-01-03%20at%2020.16.36.png)
 
 
 ## Hosting
