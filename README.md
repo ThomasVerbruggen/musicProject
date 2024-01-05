@@ -180,13 +180,13 @@ Dan hebben we ook nog 1 put en 1 delete call gemaakt. Deze zijn voor het aanpass
 <img src="./Images/AlbumGet.png" alt="Screenshot">
 <img src="./Images/ArtistGet.png" alt="Screenshot">
 <img src="./Images/SongGet.png" alt="Screenshot">
-<img src="./Images/GenreGet.png" alt="Screenshot">
+<img src="./Images/genreGet.png" alt="Screenshot">
 
 ### De 2 post calls:
 
 #### Album post call:
-<img src="./Images/AlbumPost.png" alt="Screenshot">
-<img src="./Images/AlbumAfterPost.png" alt="Screenshot">
+<img src="./Images/albumPost.png" alt="Screenshot">
+<img src="./Images/albumAfterPost.png" alt="Screenshot">
 
 #### Artist post call:
 <img src="./Images/ArtistPost.png" alt="Screenshot">
@@ -197,8 +197,8 @@ Dan hebben we ook nog 1 put en 1 delete call gemaakt. Deze zijn voor het aanpass
 <img src="./Images/ArtistAfterPut.png" alt="Screenshot">
 
 ### De delete call:
-<img src="./Images/ArtistDelete.png" alt="Screenshot">
-<img src="./Images/ArtistAfterDelete.png" alt="Screenshot">
+<img src="./Images/artistDelete.png" alt="Screenshot">
+<img src="./Images/artistAfterDelete.png" alt="Screenshot">
 
 ## Deployment Diagram
 <img src="./Images/schema.png" alt="Screenshot">
