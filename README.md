@@ -177,45 +177,40 @@ Dan hebben we ook nog 1 put en 1 delete call gemaakt. Deze zijn voor het aanpass
                     - SetPath=/api/artists
 
 ### De 4 get calls:
-![Local Image](/Images/AlbumGet.png)
-![Local Image](/Images/ArtistGet.png)
-![Local Image](/Images/SongGet.png)
-![Local Image](/Images/GenreGet.png)
-
+<img src="./Images/AlbumGet.png" alt="Screenshot">
+<img src="./Images/ArtistGet.png" alt="Screenshot">
+<img src="./Images/SongGet.png" alt="Screenshot">
+<img src="./Images/GenreGet.png" alt="Screenshot">
 
 ### De 2 post calls:
 
 #### Album post call:
-![Local Image](/Images/AlbumPost.png)
-![Local Image](/Images/AlbumAfterPost.png)
+<img src="./Images/AlbumPost.png" alt="Screenshot">
+<img src="./Images/AlbumAfterPost.png" alt="Screenshot">
 
 #### Artist post call:
-![Local Image](/Images/ArtistPost.png)
-![Local Image](/Images/artistAfterPost.png)
+<img src="./Images/ArtistPost.png" alt="Screenshot">
+<img src="./Images/artistAfterPost.png" alt="Screenshot">
 
 ### De put call:
-![Local Image](/Images/ArtistPut.png)
-![Local Image](/Images/ArtistAfterPut.png)
+<img src="./Images/ArtistPut.png" alt="Screenshot">
+<img src="./Images/ArtistAfterPut.png" alt="Screenshot">
 
 ### De delete call:
-![Local Image](/Images/ArtistDelete.png)
-![Local Image](/Images/ArtistAfterDelete.png)
-
-
+<img src="./Images/ArtistDelete.png" alt="Screenshot">
+<img src="./Images/ArtistAfterDelete.png" alt="Screenshot">
 
 ## Deployment Diagram
-![Local Image](/Images/schema.png)
-
-
+<img src="./Images/schema.png" alt="Screenshot">
 
 ## Kubernetes
-We hebben gekozen om de uitbreiding van prometheus en grafana te doen. 
+We hebben gekozen om de uitbreiding van Prometheus en Grafana te doen. 
 
-![Local Image](/Images/Screenshot%202024-01-03%20at%2020.11.46.png)
+<img src="./Images/Screenshot%202024-01-03%20at%2020.11.46.png" alt="Screenshot">
 Prometheus:
-![Local Image](/Images/Screenshot%202024-01-03%20at%2020.14.56.png)
+<img src="./Images/Screenshot%202024-01-03%20at%2020.14.56.png" alt="Screenshot">
 Grafana:
-![Local Image](/Images/Screenshot%202024-01-03%20at%2020.16.36.png)
+<img src="./Images/Screenshot%202024-01-03%20at%2020.16.36.png" alt="Screenshot">
 
 
 ## Hosting
