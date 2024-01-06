@@ -206,6 +206,10 @@ Dan hebben we ook nog 1 put en 1 delete call gemaakt. Deze zijn voor het aanpass
 ## Kubernetes
 We hebben gekozen om de uitbreiding van Prometheus en Grafana te doen. 
 
+Portforwarding the api gateway:
+
+kubectl port-forward service/api-gateway 8084:8084
+
 <img src="./Images/Screenshot%202024-01-03%20at%2020.11.46.png" alt="Screenshot">
 Prometheus:
 <img src="./Images/Screenshot%202024-01-03%20at%2020.14.56.png" alt="Screenshot">
@@ -215,4 +219,5 @@ Grafana:
 
 ## Hosting
 Ons project is niet gehost, dit komt omdat wij te laat waren om een okteto account aan te maken. Dit is waarom we dit locaal hosten op docker.
+
 
